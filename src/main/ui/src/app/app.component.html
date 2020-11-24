@@ -1,4 +1,8 @@
 <app-header></app-header>
+<nav>
+  <a class="button" routerLink="/">Home</a> |
+  <a class="button" routerLink="/test">Test Component</a>
+</nav>
 <div class="container">
   <div class="row">
     <div class="col-md-7 mrgnbtm">
@@ -20,18 +24,18 @@
             <input type="text" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
           </div>
         </div>
-        <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Create</button>
+        <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary">Create</button>
       </form>
     </div>
     <div class="col-md-4 mrgnbtm">
-      <app-display-board
-       [userCount]="userCount"
-       (getUsersEvent)="getAllUsers()"
-      >
+      <app-display-board [userCount]="userCount" (getUsersEvent)="getAllUsers()">
       </app-display-board>
     </div>
   </div>
 </div>
 <div class="mrgnbtm">
   <app-users *ngIf="users.length !== 0" [users]="users"></app-users>
+</div>
+<div class="mrgnbtm">
+  <router-outlet></router-outlet>
 </div>

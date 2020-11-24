@@ -1,6 +1,7 @@
 package com.bbtutorials.users.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,14 @@ public class UsersService {
     
     public Users saveUser(Users users) {
     	return usersRepository.save(users);
+    }
+    
+    public Optional <Users> findUser(Long id) {
+    	return usersRepository.findById(id);
+    }
+    
+    public void deleteUser(long id) {
+    	usersRepository.deleteById(id);
     }
 
 }

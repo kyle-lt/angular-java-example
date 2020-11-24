@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
+import { AppService } from './app.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -10,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { DisplayBoardComponent } from './display-board.component';
 import { UsersComponent } from './users.component';
 import { environment } from '../environments/environment';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 // state related imports
 // import { StoreModule } from '@ngrx/store';
@@ -23,7 +27,9 @@ import { environment } from '../environments/environment';
     AppComponent,
     HeaderComponent,
     DisplayBoardComponent,
-    UsersComponent
+    UsersComponent,
+    UserDetailsComponent,
+    TestComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,11 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'users/:userId', component: UserDetailsComponent },
+	  { path: 'users/delete:userId', component: UserDetailsComponent },
+	  { path: 'test', component: TestComponentComponent } 
+    ])
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
@@ -65,7 +76,7 @@ import { environment } from '../environments/environment';
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

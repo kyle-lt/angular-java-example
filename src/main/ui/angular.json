@@ -69,7 +69,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-nodejs-example:build:production"
+              "browserTarget": "angular-nodejs-example:build:production",
+              "proxyConfig": "proxy.conf.json"
             }
           }
         },
